@@ -1,0 +1,209 @@
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.action-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.action-card:hover {
+    border-color: var(--hl-green);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.action-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.action-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--hl-dark);
+}
+
+.action-card p {
+    font-size: 0.9rem;
+    color: var(--hl-gray);
+    margin: 0;
+}
+
+#world-map {
+    width: 100%;
+    margin: 1.5rem 0;
+    background: #f0f4f8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#map-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.location-dot {
+    transition: all 0.3s ease;
+}
+
+.location-dot:hover {
+    r: 12;
+}
+
+.location-label {
+    font-size: 14px;
+    font-weight: 600;
+    fill: #2c2c2c;
+}
+
+.connection-line {
+    stroke: var(--hl-green);
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 1.5s ease-out forwards;
+    opacity: 0.6;
+}
+
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.data-pulse {
+    fill: var(--hl-green);
+    opacity: 0.8;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        r: 5;
+        opacity: 0.8;
+    }
+    50% {
+        r: 8;
+        opacity: 0.4;
+    }
+}
+
+.journey-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--hl-light);
+    border-radius: 8px;
+}
+
+.location-card {
+    background: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--hl-green);
+    animation: slideIn 0.5s ease-out;
+}
+
+.location-card:last-child {
+    margin-bottom: 0;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.location-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--hl-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.location-card p {
+    margin: 0;
+    color: var(--hl-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.risk-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+.risk-low {
+    background: #d4edda;
+    color: #155724;
+}
+
+.risk-medium {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.risk-high {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+#implications-content {
+    line-height: 1.8;
+}
+
+#implications-content h3 {
+    color: var(--hl-dark);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+#implications-content h3:first-child {
+    margin-top: 0;
+}
+
+#implications-content ul {
+    padding-left: 1.5rem;
+}
+
+#implications-content li {
+    margin-bottom: 0.5rem;
+    color: var(--hl-gray);
+}
+
+#implications-content strong {
+    color: var(--hl-dark);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .location-label {
+        font-size: 12px;
+    }
+}
