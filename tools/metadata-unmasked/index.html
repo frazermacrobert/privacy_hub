@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metadata Unmasked - Privacy Month Hub</title>
+    <link rel="stylesheet" href="../../styles/tool-common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="tool-header">
+        <div class="header-nav">
+            <a href="../../index.html" class="back-button">← Back to Hub</a>
+        </div>
+        <h1>Metadata Unmasked</h1>
+        <p>Discover the hidden information in your files</p>
+    </header>
+    
+    <main class="tool-container">
+        <div class="card">
+            <h2>Select a File Type</h2>
+            <p style="color: var(--hl-gray); margin-bottom: 1.5rem;">Choose a file type to reveal what metadata it contains:</p>
+            <div class="file-type-grid">
+                <button class="file-type-btn" onclick="showMetadata('email')">
+                    <span class="icon">📧</span>
+                    <span>Email</span>
+                </button>
+                <button class="file-type-btn" onclick="showMetadata('photo')">
+                    <span class="icon">📸</span>
+                    <span>Photo</span>
+                </button>
+                <button class="file-type-btn" onclick="showMetadata('document')">
+                    <span class="icon">📄</span>
+                    <span>Document</span>
+                </button>
+                <button class="file-type-btn" onclick="showMetadata('pdf')">
+                    <span class="icon">📑</span>
+                    <span>PDF</span>
+                </button>
+                <button class="file-type-btn" onclick="showMetadata('presentation')">
+                    <span class="icon">📊</span>
+                    <span>Presentation</span>
+                </button>
+            </div>
+        </div>
+        
+        <div id="metadata-display" style="display: none;">
+            <div class="card">
+                <h2 id="file-title">Metadata Revealed</h2>
+                <p style="color: var(--hl-gray); margin-bottom: 1.5rem;">Click on each category to explore the hidden data:</p>
+                <div id="metadata-categories"></div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
