@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Reflex Trainer - Privacy Month Hub</title>
+    <link rel="stylesheet" href="../../styles/tool-common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="tool-header">
+        <div class="header-nav">
+            <a href="../../index.html" class="back-button">← Back to Hub</a>
+        </div>
+        <h1>Privacy Reflex Trainer</h1>
+        <p>Build your instinct for safer online choices</p>
+    </header>
+    
+    <main class="tool-container">
+        <div class="card" id="intro-card">
+            <h2>Test Your Privacy Reflexes</h2>
+            <p style="color: var(--hl-gray); margin-bottom: 1.5rem;">
+                You'll be shown 10 scenarios. Tap only the SAFE options as quickly as possible. 
+                Wrong choices lose points!
+            </p>
+            <div class="game-stats-preview">
+                <div class="stat-item">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-label">10 Questions</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-label">Fast-paced</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-label">Build Score</div>
+                </div>
+            </div>
+            <button class="button" onclick="startGame()">Start Training</button>
+        </div>
+        
+        <div class="card" id="game-card" style="display: none;">
+            <div class="game-header">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label">Question</span>
+                        <span class="stat-value" id="question-counter">1/10</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Score</span>
+                        <span class="stat-value" id="score-display">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Streak</span>
+                        <span class="stat-value" id="streak-display">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h3 id="question-text"></h3>
+                <div id="options-container" class="options-grid"></div>
+            </div>
+            
+            <div id="feedback" class="feedback" style="display: none;"></div>
+        </div>
+        
+        <div class="card" id="results-card" style="display: none;">
+            <h2>Training Complete! 🎉</h2>
+            <div class="final-score-display">
+                <div class="score-circle">
+                    <div class="score-number" id="final-score">0</div>
+                    <div class="score-label">points</div>
+                </div>
+            </div>
+            
+            <div id="performance-rating"></div>
+            
+            <div class="recommendations">
+                <h3>📚 Your Personalized Recommendations</h3>
+                <div id="recommendations-list"></div>
+            </div>
+            
+            <button class="button" onclick="startGame()">Train Again</button>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
