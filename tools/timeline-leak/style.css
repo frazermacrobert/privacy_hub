@@ -1,0 +1,188 @@
+/* Layout for scenario cards */
+
+.scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.scenario-card {
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.25rem 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.scenario-card:hover,
+.scenario-card:focus {
+    border-color: var(--hl-green);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.scenario-icon {
+    font-size: 1.5rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.scenario-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    color: var(--hl-dark);
+}
+
+.scenario-card p {
+    font-size: 0.9rem;
+    color: var(--hl-gray);
+}
+
+/* Timeline container */
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-header h2 {
+    font-size: 1.1rem;
+    color: var(--hl-dark);
+}
+
+/* Horizontal timeline */
+
+.timeline {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0.75rem 0.25rem 0.75rem 0;
+    margin-top: 0.5rem;
+}
+
+/* Subtle line behind steps */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 24px;
+    height: 2px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.02));
+    pointer-events: none;
+}
+
+/* Individual step cards */
+
+.timeline-step {
+    position: relative;
+    flex: 0 0 220px;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    padding: 1.5rem 1rem 1rem;
+    font-size: 0.9rem;
+    color: var(--hl-dark);
+    opacity: 0.35;
+    transform: translateY(8px);
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Step marker (circle with number) */
+
+.step-marker {
+    position: absolute;
+    top: -10px;
+    left: 1rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--hl-dark);
+    z-index: 1;
+}
+
+.step-body h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.35rem;
+}
+
+.step-body p {
+    font-size: 0.85rem;
+    color: var(--hl-gray);
+}
+
+/* Active / revealed step */
+
+.timeline-step.active {
+    opacity: 1;
+    transform: translateY(0);
+    border-color: var(--hl-green);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.timeline-step.active .step-marker {
+    border-color: var(--hl-green);
+    background: var(--hl-green);
+    color: #2c2c2c;
+}
+
+/* Prevention card */
+
+#prevention-card {
+    margin-top: 1.5rem;
+}
+
+#prevention-content p {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--hl-dark);
+}
+
+#prevention-content ul {
+    padding-left: 1.25rem;
+    margin: 0 0 0.75rem;
+    font-size: 0.9rem;
+    color: var(--hl-dark);
+}
+
+#prevention-content li + li {
+    margin-top: 0.25rem;
+}
+
+#prevention-content .minor-note {
+    font-size: 0.8rem;
+    color: var(--hl-gray);
+    margin-top: 0.25rem;
+}
+
+/* Mobile tweaks */
+
+@media (max-width: 768px) {
+    .timeline-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .timeline-step {
+        flex: 0 0 200px;
+    }
+}
