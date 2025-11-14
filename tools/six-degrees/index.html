@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Six Degrees of Your Data - Privacy Month Hub</title>
+    <link rel="stylesheet" href="../../styles/tool-common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="tool-header">
+        <div class="header-nav">
+            <a href="../../index.html" class="back-button">← Back to Hub</a>
+        </div>
+        <h1>Six Degrees of Your Data</h1>
+        <p>See how one action creates ripples across the data landscape</p>
+    </header>
+    
+    <main class="tool-container">
+        <div class="card">
+            <h2>Choose an Action</h2>
+            <p style="color: var(--hl-gray); margin-bottom: 1.5rem;">Select an everyday activity to visualize how your data multiplies:</p>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="startVisualization('email')">
+                    <span class="action-icon">📧</span>
+                    <span class="action-text">Send an Email</span>
+                </button>
+                <button class="action-btn" onclick="startVisualization('document')">
+                    <span class="action-icon">📄</span>
+                    <span class="action-text">Share a Document</span>
+                </button>
+                <button class="action-btn" onclick="startVisualization('photo')">
+                    <span class="action-icon">📸</span>
+                    <span class="action-text">Upload a Photo</span>
+                </button>
+                <button class="action-btn" onclick="startVisualization('meeting')">
+                    <span class="action-icon">💻</span>
+                    <span class="action-text">Schedule a Meeting</span>
+                </button>
+            </div>
+        </div>
+        
+        <div id="visualization" class="visualization-container" style="display: none;">
+            <div class="card">
+                <h2>Data Spread Visualization</h2>
+                <canvas id="networkCanvas"></canvas>
+                <div id="results" class="results-panel"></div>
+            </div>
+        </div>
+        
+        <div id="tips" class="card" style="display: none;">
+            <h2>💡 Shrink Your Footprint</h2>
+            <ul id="tipsList" class="tips-list"></ul>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
