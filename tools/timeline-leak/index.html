@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline of a Leak - Privacy Month Hub</title>
+    <link rel="stylesheet" href="../../styles/tool-common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="tool-header">
+        <div class="header-nav">
+            <a href="../../index.html" class="back-button">← Back to Hub</a>
+        </div>
+        <h1>Timeline of a Leak</h1>
+        <p>Understand how quickly small mistakes escalate</p>
+    </header>
+    
+    <main class="tool-container">
+        <div class="card">
+            <h2>Choose a Leak Scenario</h2>
+            <p style="color: var(--hl-gray); margin-bottom: 1.5rem;">
+                Select a common mistake to see how it escalates over time:
+            </p>
+            <div class="scenario-grid">
+                <button class="scenario-card" onclick="startTimeline('cloud-misconfiguration')">
+                    <span class="scenario-icon">☁️</span>
+                    <h3>Cloud Misconfiguration</h3>
+                    <p>Accidentally public file sharing</p>
+                </button>
+                <button class="scenario-card" onclick="startTimeline('lost-device')">
+                    <span class="scenario-icon">📱</span>
+                    <h3>Lost Device</h3>
+                    <p>Unlocked phone left in taxi</p>
+                </button>
+                <button class="scenario-card" onclick="startTimeline('phishing-click')">
+                    <span class="scenario-icon">🎣</span>
+                    <h3>Phishing Click</h3>
+                    <p>Clicked malicious link</p>
+                </button>
+                <button class="scenario-card" onclick="startTimeline('weak-password')">
+                    <span class="scenario-icon">🔑</span>
+                    <h3>Weak Password</h3>
+                    <p>Simple password gets cracked</p>
+                </button>
+            </div>
+        </div>
+        
+        <div class="card" id="timeline-container" style="display: none;">
+            <div class="timeline-header">
+                <h2>⏱️ <span id="scenario-title">Timeline</span></h2>
+                <button class="button button-secondary" id="start-button" onclick="playTimeline()">
+                    ▶️ Start Timeline
+                </button>
+            </div>
+            <div id="timeline" class="timeline"></div>
+        </div>
+        
+        <div class="card" id="prevention-card" style="display: none;">
+            <h2>🛡️ How to Avoid This Timeline</h2>
+            <div id="prevention-content"></div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
