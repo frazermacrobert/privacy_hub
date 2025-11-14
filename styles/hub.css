@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --hl-green: #B3D334;
+    --hl-dark: #2c2c2c;
+    --hl-light: #f8f9fa;
+    --hl-gray: #6c757d;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--hl-light);
+    color: var(--hl-dark);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Lighthouse beacon effect - subtle rotating glow */
+.lighthouse-beacon {
+    position: fixed;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(179, 211, 52, 0.1) 0%, transparent 70%);
+    animation: lighthouse-pulse 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes lighthouse-pulse {
+    0%, 100% { 
+        opacity: 0.3; 
+        transform: scale(1); 
+    }
+    50% { 
+        opacity: 0.6; 
+        transform: scale(1.1); 
+    }
+}
+
+.hub-header {
+    background: linear-gradient(135deg, var(--hl-dark) 0%, #1a1a1a 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Lighthouse beam effect - green glow at bottom */
+.hub-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--hl-green);
+    box-shadow: 0 0 20px var(--hl-green);
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+}
+
+.hub-main {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--hl-dark);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Navigation beam effect on hover */
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--hl-green);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+.tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.tool-card:hover::before {
+    transform: scaleX(1);
+}
+
+.tool-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.tool-card:hover .tool-icon {
+    transform: scale(1.1);
+}
+
+.tool-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--hl-dark);
+}
+
+.tool-card p {
+    font-size: 0.95rem;
+    color: var(--hl-gray);
+    line-height: 1.5;
+}
+
+.hub-footer {
+    background: var(--hl-dark);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+.hub-footer p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .tool-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hub-main {
+        margin: 2rem auto;
+    }
+}
