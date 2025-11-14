@@ -1,43 +1,100 @@
+/* ---------------------------------------------
+   GLOBAL RESET
+---------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ---------------------------------------------
+   THEME VARIABLES
+---------------------------------------------- */
 :root {
     --hl-green: #B3D334;
-    --hl-dark: #2c2c2c;
-    --hl-light: #f8f9fa;
+    --hl-green-soft: #dff2a0;
+    --hl-dark: #1d1f24;
+    --hl-light: #f4f6f9;
     --hl-gray: #6c757d;
+    --hl-blue-soft: #d7e9ff;
+    --hl-surface: #ffffff;
+    --hl-border-soft: rgba(0, 0, 0, 0.06);
+
+    --safe: #0a7d40;
+    --danger: #b00020;
+    --amber: #d08700;
+
+    --shadow-soft: 0 2px 6px rgba(15, 23, 42, 0.08);
+    --shadow-card: 0 14px 32px rgba(15, 23, 42, 0.16);
 }
 
+/* ---------------------------------------------
+   BASE
+---------------------------------------------- */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: var(--hl-light);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(183, 213, 52, 0.22), transparent 60%),
+        radial-gradient(circle at 100% 0%, rgba(125, 179, 255, 0.2), transparent 60%),
+        linear-gradient(180deg, #f7f8fb 0%, #eef3f0 45%, #edf4ff 100%);
     color: var(--hl-dark);
     line-height: 1.6;
 }
 
+/* ---------------------------------------------
+   HEADER
+---------------------------------------------- */
 .tool-header {
-    background: linear-gradient(135deg, var(--hl-dark) 0%, #1a1a1a 100%);
-    color: white;
-    padding: 1.5rem 2rem;
+    background:
+        radial-gradient(circle at 15% 0%, rgba(179, 211, 52, 0.23), transparent 60%),
+        radial-gradient(circle at 90% 0%, rgba(83, 144, 255, 0.2), transparent 60%),
+        linear-gradient(135deg, #14161a 0%, #191b21 55%, #111827 100%);
+    color: #ffffff;
+    padding: 1.75rem 2rem 1.5rem;
     position: relative;
+    overflow: hidden;
 }
 
-/* Lighthouse beam effect */
+/* thin beam at bottom */
 .tool-header::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: -10%;
+    right: -10%;
     height: 3px;
     background: var(--hl-green);
-    box-shadow: 0 0 15px var(--hl-green);
+    box-shadow: 0 0 20px rgba(179, 211, 52, 0.9);
+}
+
+/* subtle sweeping cone behind text */
+.tool-header::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: -20%;
+    width: 160%;
+    height: 220%;
+    background: conic-gradient(
+        from 210deg,
+        rgba(179, 211, 52, 0.16),
+        rgba(179, 211, 52, 0),
+        rgba(125, 179, 255, 0.18),
+        rgba(125, 179, 255, 0)
+    );
+    opacity: 0.55;
+    animation: tool-beacon-sweep 22s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes tool-beacon-sweep {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .header-nav {
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -45,148 +102,222 @@ body {
 }
 
 .back-button {
-    background: rgba(179, 211, 52, 0.2);
-    color: var(--hl-green);
-    border: 1px solid var(--hl-green);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 0.45rem 1.1rem;
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.28);
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
+    transition: background 0.25s ease, transform 0.12s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .back-button:hover {
-    background: var(--hl-green);
+    background: #ffffff;
     color: var(--hl-dark);
+    border-color: #ffffff;
     transform: translateX(-2px);
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.28);
 }
 
 .tool-header h1 {
-    font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 2;
+    font-size: clamp(1.9rem, 3vw, 2.4rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.3rem;
 }
 
 .tool-header p {
-    font-size: 1rem;
-    opacity: 0.9;
-    font-weight: 300;
+    position: relative;
+    z-index: 2;
+    font-size: 0.98rem;
+    max-width: 720px;
+    opacity: 0.88;
 }
 
+/* ---------------------------------------------
+   MAIN LAYOUT
+---------------------------------------------- */
 .tool-container {
-    max-width: 1000px;
-    margin: 2rem auto;
+    max-width: 1080px;
+    margin: 2.25rem auto 2.75rem;
     padding: 0 2rem;
 }
 
+/* ---------------------------------------------
+   CARDS
+---------------------------------------------- */
 .card {
-    background: white;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: var(--hl-surface);
+    border-radius: 18px;
+    padding: 1.8rem 1.9rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--hl-border-soft);
     margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* subtle radial glow in one corner */
+.card::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(183, 213, 52, 0.18), transparent 65%);
+    opacity: 0.7;
+    pointer-events: none;
 }
 
 .card h2 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0.9rem;
     color: var(--hl-dark);
 }
 
 .card h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.7rem;
     color: var(--hl-dark);
 }
 
-.button {
-    background: var(--hl-green);
-    color: var(--hl-dark);
+/* ---------------------------------------------
+   BUTTONS (PRIMARY AND SECONDARY)
+---------------------------------------------- */
+.button,
+.primary-button,
+.btn-primary {
+    background: var(--hl-dark);
+    color: #ffffff;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
     text-decoration: none;
+    transition: background 0.25s ease, transform 0.12s ease, box-shadow 0.25s ease;
 }
 
-.button:hover {
-    background: #a0c020;
+.button:hover,
+.primary-button:hover,
+.btn-primary:hover {
+    background: #000000;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(179, 211, 52, 0.3);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.28);
 }
 
-.button:active {
+.button:active,
+.primary-button:active,
+.btn-primary:active {
     transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
 }
 
-.button:disabled {
-    opacity: 0.5;
+.button:disabled,
+.primary-button:disabled,
+.btn-primary:disabled {
+    opacity: 0.55;
     cursor: not-allowed;
+    box-shadow: none;
     transform: none;
 }
 
+/* outline style */
 .button-secondary {
-    background: white;
+    background: transparent;
     color: var(--hl-dark);
+    border-radius: 999px;
     border: 2px solid var(--hl-green);
+    padding: 0.6rem 1.4rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.12s ease;
 }
 
 .button-secondary:hover {
-    background: var(--hl-light);
+    background: rgba(179, 211, 52, 0.1);
+    color: var(--hl-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(179, 211, 52, 0.3);
 }
 
-/* Alert/Info boxes */
+/* ---------------------------------------------
+   INFO / ALERT BOXES
+---------------------------------------------- */
+.info-box,
+.warning-box,
+.success-box {
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin: 0.9rem 0 1.1rem;
+    font-size: 0.9rem;
+}
+
 .info-box {
-    background: var(--hl-light);
-    border-left: 4px solid var(--hl-green);
-    padding: 1rem 1.5rem;
-    margin: 1rem 0;
-    border-radius: 4px;
+    background: #f3f6ff;
+    border-left: 4px solid #7b9cff;
+    color: #1f2937;
 }
 
 .warning-box {
-    background: #fff3cd;
+    background: #fff7e0;
     border-left: 4px solid #ffc107;
-    padding: 1rem 1.5rem;
-    margin: 1rem 0;
-    border-radius: 4px;
+    color: #704c00;
 }
 
 .success-box {
-    background: #d4edda;
-    border-left: 4px solid #28a745;
-    padding: 1rem 1.5rem;
-    margin: 1rem 0;
-    border-radius: 4px;
+    background: #e4f6ea;
+    border-left: 4px solid var(--safe);
+    color: #14532d;
 }
 
-/* Mobile responsive */
+/* ---------------------------------------------
+   RESPONSIVE
+---------------------------------------------- */
 @media (max-width: 768px) {
+    .tool-header {
+        padding: 1.5rem 1.25rem 1.35rem;
+    }
+
     .tool-header h1 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
-    
+
     .tool-container {
-        padding: 0 1rem;
-        margin: 1rem auto;
+        padding: 0 1.25rem;
+        margin: 1.5rem auto 2.4rem;
     }
-    
+
     .card {
-        padding: 1.5rem;
+        padding: 1.5rem 1.4rem;
     }
-    
-    .button {
+
+    .button,
+    .primary-button,
+    .btn-primary,
+    .button-secondary {
         width: 100%;
-        text-align: center;
+        justify-content: center;
     }
 }
