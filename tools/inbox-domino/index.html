@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox Domino Effect - Privacy Month Hub</title>
+    <link rel="stylesheet" href="../../styles/tool-common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="tool-header">
+        <div class="header-nav">
+            <a href="../../index.html" class="back-button">← Back to Hub</a>
+        </div>
+        <h1>Inbox Domino Effect</h1>
+        <p>See how one email triggers a cascade of privacy risks</p>
+    </header>
+    
+    <main class="tool-container">
+        <div class="card">
+            <h2>Choose an Email Scenario</h2>
+            <p style="color: var(--hl-gray); margin-bottom: 1.5rem;">Select a seemingly innocent email situation:</p>
+            <div class="scenario-grid">
+                <button class="scenario-btn" onclick="startDomino('wrong-recipient')">
+                    <span class="scenario-icon">📧</span>
+                    <h3>Wrong Recipient</h3>
+                    <p>Sent to john@company.com instead of john@client.com</p>
+                </button>
+                <button class="scenario-btn" onclick="startDomino('reply-all')">
+                    <span class="scenario-icon">📨</span>
+                    <h3>Reply All Gone Wrong</h3>
+                    <p>Internal discussion shared with external partners</p>
+                </button>
+                <button class="scenario-btn" onclick="startDomino('forwarded')">
+                    <span class="scenario-icon">➡️</span>
+                    <h3>Forwarded Chain</h3>
+                    <p>Confidential email forwarded without permission</p>
+                </button>
+                <button class="scenario-btn" onclick="startDomino('attachment')">
+                    <span class="scenario-icon">📎</span>
+                    <h3>Wrong Attachment</h3>
+                    <p>Sent confidential file to wrong person</p>
+                </button>
+            </div>
+        </div>
+        
+        <div id="domino-container" class="card" style="display: none;">
+            <h2>Domino Chain Reaction</h2>
+            <div id="domino-chain"></div>
+        </div>
+        
+        <div id="prevention-tips" class="card" style="display: none;">
+            <h2>🛡️ How to Stop the Chain</h2>
+            <div id="tips-content"></div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
