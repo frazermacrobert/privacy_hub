@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Gossip Simulator - Privacy Month Hub</title>
+    <link rel="stylesheet" href="../../styles/tool-common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="tool-header">
+        <div class="header-nav">
+            <a href="../../index.html" class="back-button">← Back to Hub</a>
+        </div>
+        <h1>Global Gossip Simulator</h1>
+        <p>Watch your data spread across borders in real-time</p>
+    </header>
+    
+    <main class="tool-container">
+        <div class="card">
+            <h2>Choose Your Action</h2>
+            <p style="color: var(--hl-gray); margin-bottom: 1.5rem;">Select an everyday action to see how your data crosses international borders:</p>
+            <div class="action-grid">
+                <button class="action-card" onclick="simulateSpread('social-post')">
+                    <span class="action-icon">📱</span>
+                    <h3>Post on Social Media</h3>
+                    <p>Share a photo or update</p>
+                </button>
+                <button class="action-card" onclick="simulateSpread('document')">
+                    <span class="action-icon">📄</span>
+                    <h3>Forward a Document</h3>
+                    <p>Email a file to colleagues</p>
+                </button>
+                <button class="action-card" onclick="simulateSpread('shopping')">
+                    <span class="action-icon">🛍️</span>
+                    <h3>Online Shopping</h3>
+                    <p>Make a purchase online</p>
+                </button>
+                <button class="action-card" onclick="simulateSpread('video-call')">
+                    <span class="action-icon">📹</span>
+                    <h3>Video Conference</h3>
+                    <p>Join an international call</p>
+                </button>
+            </div>
+        </div>
+        
+        <div id="map-container" class="card" style="display: none;">
+            <h2>Data Journey Map</h2>
+            <div id="world-map">
+                <svg viewBox="0 0 1000 500" id="map-svg">
+                    <!-- Simplified world map background -->
+                    <rect width="1000" height="500" fill="#f0f4f8"/>
+                    
+                    <!-- Origin point (UK) -->
+                    <circle id="origin" cx="500" cy="200" r="15" fill="#B3D334" class="location-dot"/>
+                    <text x="500" y="185" text-anchor="middle" class="location-label">UK (You)</text>
+                    
+                    <!-- Destination points (will be revealed during animation) -->
+                    <g id="destinations" style="display: none;">
+                        <circle id="dest-us" cx="250" cy="220" r="10" fill="#2c2c2c" class="location-dot"/>
+                        <text x="250" y="205" text-anchor="middle" class="location-label">USA</text>
+                        
+                        <circle id="dest-eu" cx="550" cy="180" r="10" fill="#2c2c2c" class="location-dot"/>
+                        <text x="550" y="165" text-anchor="middle" class="location-label">Germany</text>
+                        
+                        <circle id="dest-asia" cx="750" cy="250" r="10" fill="#2c2c2c" class="location-dot"/>
+                        <text x="750" y="235" text-anchor="middle" class="location-label">Singapore</text>
+                        
+                        <circle id="dest-aus" cx="800" cy="380" r="10" fill="#2c2c2c" class="location-dot"/>
+                        <text x="800" y="365" text-anchor="middle" class="location-label">Australia</text>
+                    </g>
+                    
+                    <!-- Connection lines (animated) -->
+                    <g id="connections"></g>
+                </svg>
+            </div>
+            
+            <div id="journey-info" class="journey-info"></div>
+        </div>
+        
+        <div id="legal-implications" class="card" style="display: none;">
+            <h2>⚖️ Legal Implications</h2>
+            <div id="implications-content"></div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
