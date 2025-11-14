@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Profile Scanner (simulated) - Privacy Month Hub</title>
+    <link rel="stylesheet" href="../../styles/tool-common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="tool-header">
+        <div class="header-nav">
+            <a href="../../index.html" class="back-button">← Back to Hub</a>
+        </div>
+        <h1>Public Profile Scanner <span class="muted-label">(simulated)</span></h1>
+        <p>
+            Paste or sketch a public facing profile and see what a motivated observer could reasonably infer.
+            No scraping, no real data, just a guided thought experiment.
+        </p>
+    </header>
+
+    <main class="tool-container">
+        <div class="card profile-scanner-card">
+            <div class="scanner-layout">
+                <!-- LEFT: PROFILE INPUT -->
+                <section class="scanner-input" aria-label="Profile input">
+                    <h2>Describe the profile</h2>
+                    <p class="scanner-intro">
+                        Imagine a short public bio, conference listing or social profile.
+                        You can paste an anonymised example, or just describe the kind of details it includes.
+                    </p>
+
+                    <div class="preset-row" aria-label="Quick presets">
+                        <button type="button" class="preset-chip" data-preset="professional">
+                            Typical professional profile
+                        </button>
+                        <button type="button" class="preset-chip" data-preset="speaker">
+                            Conference speaker bio
+                        </button>
+                        <button type="button" class="preset-chip" data-preset="social">
+                            Social media “about me”
+                        </button>
+                    </div>
+
+                    <label for="profile-text" class="field-label">
+                        Profile text or description
+                        <span class="field-help">
+                            Do not paste real client or colleague names. Use fictional, generic or anonymised examples.
+                        </span>
+                    </label>
+                    <textarea
+                        id="profile-text"
+                        class="profile-textarea"
+                        rows="7"
+                        placeholder="Example: ‘Data privacy specialist at an international law firm, based in London, advising clients on cross-border investigations and tech sector deals. Regular speaker at industry events. Runner and coffee enthusiast.’"
+                    ></textarea>
+
+                    <fieldset class="signal-checkboxes">
+                        <legend>What kinds of details are visible?</legend>
+                        <p class="signal-note">
+                            Tick anything that broadly appears in the profile. This helps shape the simulation.
+                        </p>
+                        <div class="signal-grid">
+                            <label class="signal-item">
+                                <input type="checkbox" id="signal-location" checked>
+                                Location / city
+                            </label>
+                            <label class="signal-item">
+                                <input type="checkbox" id="signal-employer" checked>
+                                Employer or sector
+                            </label>
+                            <label class="signal-item">
+                                <input type="checkbox" id="signal-role" checked>
+                                Job title / seniority
+                            </label>
+                            <label class="signal-item">
+                                <input type="checkbox" id="signal-contact">
+                                Contact route (email / DM)
+                            </label>
+                            <label class="signal-item">
+                                <input type="checkbox" id="signal-interests">
+                                Personal interests / hobbies
+                            </label>
+                            <label class="signal-item">
+                                <input type="checkbox" id="signal-photos">
+                                Photos / headshots
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <button type="button" class="primary-button" id="run-scan-btn">
+                        Run simulated scan
+                    </button>
+                </section>
+
+                <!-- RIGHT: SCAN RESULTS -->
+                <section class="scanner-output" aria-label="Scan results">
+                    <h2>What could be inferred?</h2>
+                    <p class="scanner-helper">
+                        These are examples of how someone might combine public clues.
+                        It is not a judgement on you, just a way to see the profile through a different lens.
+                    </p>
+
+                    <div class="profile-risk" id="profile-risk">
+                        <p class="risk-label">Overall exposure pattern</p>
+                        <div class="risk-pill" id="profile-risk-pill">Neutral / mixed</div>
+                        <p class="risk-note" id="profile-risk-note">
+                            Add some details and run the scan to see how the pattern changes.
+                        </p>
+                    </div>
+
+                    <div class="inference-panel">
+                        <h3>Possible inferences</h3>
+                        <ul class="inference-list" id="inference-list">
+                            <!-- JS will populate with suggested inferences -->
+                        </ul>
+                    </div>
+
+                    <div class="mitigation-panel">
+                        <h3>Tweak the profile, keep the value</h3>
+                        <ul class="mitigation-list" id="mitigation-list">
+                            <!-- JS will populate suggestions for softening risk while keeping usefulness -->
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="card scanner-tips-card">
+            <h2>Balancing visibility and privacy</h2>
+            <p>
+                Public profiles help people find you, trust you and work with you. The aim is not to disappear,
+                but to avoid giving away more than you intended.
+            </p>
+            <ul>
+                <li>Share what you do without revealing more about where, when and how you do it than necessary.</li>
+                <li>Separate “contact me professionally” channels from purely personal spaces where you can.</li>
+                <li>Be cautious about combining location, routine and identifiable photos in the same place.</li>
+                <li>Review older profiles and biographies from time to time; yesterday’s safe detail can be today’s over-share.</li>
+            </ul>
+            <p class="scanner-footnote">
+                If you are unsure about a profile, a quick sense-check with the Privacy team can help you strike the right balance.
+            </p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
