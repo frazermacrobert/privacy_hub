@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Settings Lab - Privacy Month Hub</title>
+    <link rel="stylesheet" href="../../styles/tool-common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="tool-header">
+        <div class="header-nav">
+            <a href="../../index.html" class="back-button">← Back to Hub</a>
+        </div>
+        <h1>Privacy Settings Lab</h1>
+        <p>Experiment with settings and see how your choices change risk</p>
+    </header>
+
+    <main class="tool-container">
+        <div class="card settings-lab-card">
+            <div class="lab-layout">
+                <!-- Left column: controls -->
+                <section class="lab-controls">
+                    <h2>Adjust your settings</h2>
+                    <p class="lab-intro">
+                        Try different combinations below. In real life the details depend on the specific tool,
+                        contract and data involved, but this gives a feel for how settings can tilt risk up or down.
+                    </p>
+
+                    <div class="lab-control-group">
+                        <label for="visibility-setting" class="lab-label">
+                            Visibility
+                            <span class="lab-label-help">Who can see this by default?</span>
+                        </label>
+                        <select id="visibility-setting" class="lab-select">
+                            <option value="public">Public / broad audience</option>
+                            <option value="restricted">Restricted team or project group</option>
+                            <option value="need-to-know">Need to know only</option>
+                        </select>
+                    </div>
+
+                    <div class="lab-control-group">
+                        <label for="tracking-setting" class="lab-label">
+                            Tracking and analytics
+                            <span class="lab-label-help">How much behavioural data is collected?</span>
+                        </label>
+                        <select id="tracking-setting" class="lab-select">
+                            <option value="broad">Broad tracking and profiling</option>
+                            <option value="minimised">Minimised and aggregated</option>
+                            <option value="strict">Strictly necessary only</option>
+                        </select>
+                    </div>
+
+                    <div class="lab-control-group">
+                        <label for="sync-setting" class="lab-label">
+                            Sync and storage
+                            <span class="lab-label-help">Where and how widely is data copied?</span>
+                        </label>
+                        <select id="sync-setting" class="lab-select">
+                            <option value="multi-region">Multi region syncing and backups</option>
+                            <option value="regional">Regional storage with limited copies</option>
+                            <option value="minimal">Minimal syncing, shorter retention</option>
+                        </select>
+                    </div>
+
+                    <div class="lab-control-group">
+                        <label for="access-setting" class="lab-label">
+                            Access controls
+                            <span class="lab-label-help">How tightly is access managed?</span>
+                        </label>
+                        <select id="access-setting" class="lab-select">
+                            <option value="shared">Shared accounts or credentials</option>
+                            <option value="individual">Individual accounts with passwords</option>
+                            <option value="strong">Strong auth and role based access</option>
+                        </select>
+                    </div>
+                </section>
+
+                <!-- Right column: risk indicator -->
+                <section class="lab-output">
+                    <h2>Risk spotlight</h2>
+                    <p class="lab-helper">
+                        This is a simplified illustration, not a formal risk rating. It is here to encourage better questions
+                        when you are choosing or configuring tools.
+                    </p>
+
+                    <div class="risk-meter" id="risk-meter">
+                        <p class="risk-label">Overall risk level</p>
+                        <div class="risk-score" id="risk-score">Medium</div>
+                        <div class="risk-bar">
+                            <div class="risk-bar-fill" id="risk-bar-fill"></div>
+                        </div>
+                        <p class="risk-commentary" id="risk-commentary">
+                            Choose some settings to see how the balance shifts.
+                        </p>
+                    </div>
+
+                    <div class="risk-factors-panel">
+                        <h3>What is driving this?</h3>
+                        <ul class="risk-factors" id="risk-factors">
+                            <!-- JS will populate key drivers here -->
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="card lab-tips-card">
+            <h2>Good privacy habits in tool settings</h2>
+            <p>
+                The safest configuration depends on context, but some themes show up again and again:
+            </p>
+            <ul>
+                <li>Start from a “need to know” mindset, then open up access only where it is justified.</li>
+                <li>Limit unnecessary tracking and profiling, especially for internal tools that do not need it.</li>
+                <li>Be curious about where data is stored and backed up, not just what the interface shows.</li>
+                <li>Use strong authentication and avoid shared logins wherever possible.</li>
+            </ul>
+            <p class="lab-footnote">
+                If you are unsure how a particular tool behaves, ask the Privacy or IT teams before switching on new features.
+            </p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
