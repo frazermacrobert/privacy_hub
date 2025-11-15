@@ -250,35 +250,35 @@ body {
    (assumes images in /assets/cards/1.png ... 8.png)
 -------------------------------------------------- */
 .tool-card--1 {
-    background-image: url("../assets/cards/1.png");
+    background-image: url("../assets/cards/1.jpg");
 }
 
 .tool-card--2 {
-    background-image: url("../assets/cards/2.png");
+    background-image: url("../assets/cards/2.jpg");
 }
 
 .tool-card--3 {
-    background-image: url("../assets/cards/3.png");
+    background-image: url("../assets/cards/3.jpg");
 }
 
 .tool-card--4 {
-    background-image: url("../assets/cards/4.png");
+    background-image: url("../assets/cards/4.jpg");
 }
 
 .tool-card--5 {
-    background-image: url("../assets/cards/5.png");
+    background-image: url("../assets/cards/5.jpg");
 }
 
 .tool-card--6 {
-    background-image: url("../assets/cards/6.png");
+    background-image: url("../assets/cards/6.jpg");
 }
 
 .tool-card--7 {
-    background-image: url("../assets/cards/7.png");
+    background-image: url("../assets/cards/7.jpg");
 }
 
 .tool-card--8 {
-    background-image: url("../assets/cards/8.png");
+    background-image: url("../assets/cards/8.jpg");
 }
 
 /* -------------------------------------------------
