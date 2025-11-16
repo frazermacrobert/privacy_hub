@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const stylesheet = document.createElement('link');
             stylesheet.rel = 'stylesheet';
             stylesheet.href = `${pathPrefix}styles/header.css`;
+            stylesheet.href = `/styles/header.css`;
             document.head.appendChild(stylesheet);
 
             setupNavigation();
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (burgerMenu && navLinksContainer) {
             burgerMenu.addEventListener('click', () => {
                 burgerMenu.classList.toggle('open');
-                navLinksContainer.classList.toggle('open');
+                navLinkmsContainer.classList.toggle('open');
             });
         }
 
@@ -58,6 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isHomePage) {
             prevPath = `tools/${tools[tools.length - 1].slug}/index.html`;
             nextPath = `tools/${tools[0].slug}/index.html`;
+        const homePath = isHomePage ? '#' : `/index.html`;
+        let prevPath, nextPath;
+
+        if (isHomePage) {
+            prevPath = `/tools/${tools[tools.length - 1].slug}/index.html`;
+            nextPath = `/tools/${tools[0].slug}/index.html`;
         } else {
             const currentIndex = tools.findIndex(tool => tool.slug === currentToolSlug);
             const base = pathPrefix.replace('../', ''); // Adjust for tool pages
@@ -65,12 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 prevPath = homePath; // From tool 1 to home
             } else {
                 prevPath = `${base}${tools[currentIndex - 1].slug}/index.html`;
+                prevPath = `/tools/${tools[currentIndex - 1].slug}/index.html`;
             }
 
             if (currentIndex === tools.length - 1) {
                 nextPath = homePath; // From last tool to home
             } else {
                 nextPath = `${base}${tools[currentIndex + 1].slug}/index.html`;
+                nextPath = `/tools/${tools[currentIndex + 1].slug}/index.html`;
             }
         }
 
@@ -93,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const base = isHomePage ? 'tools/' : pathPrefix.replace('../', '');
             const toolPath = `${base}${tool.slug}/index.html`;
             link.href = toolPath;
+            link.href = `/tools/${tool.slug}/index.html`;
             link.className = 'nav-link';
             link.textContent = tool.name;
             navLinksContainer.appendChild(link);
